@@ -46,7 +46,7 @@ class _NRWordState extends State<NRWord> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Natural Resources'),
+          Text('Natural Resources', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
           Expanded(
             child: FutureBuilder(
               future: _wordservices.readWords(),

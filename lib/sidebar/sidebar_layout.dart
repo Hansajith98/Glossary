@@ -39,26 +39,31 @@ class SideBarLayout extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: TextFormField(
-                          onChanged: (String text) {
-                          if (_debounce?.isActive ?? false) _debounce.cancel();
-                          _debounce = Timer(const Duration(milliseconds: 1000), () {});
-//                          search.searchWord(text);
-                          },
-                          controller: _controller,
-                          decoration: InputDecoration(
-                          hintText: "Search for a word",
-                          contentPadding: const EdgeInsets.only(left: 24.0),
-                          border: InputBorder.none,
-                          ),
+                            onTap: () {
+                            showSearch(context: context, delegate: DataSearch());
+                            },
+                            onChanged: (String text) {
+                            if (_debounce?.isActive ?? false) _debounce.cancel();
+                            _debounce = Timer(const Duration(milliseconds: 1000), () {});
+                            //search.searchWord(text);
+                            },
+                            controller: _controller,
+                            decoration: InputDecoration(
+                            hintText: "Search for a word",
+                            contentPadding: const EdgeInsets.only(left: 24.0),
+                            border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
                       IconButton(
                         icon: Icon(
                         Icons.search,
-                        color: Colors.blue[500],
+                        color: Colors.blueAccent,
                         ),
-                      onPressed: () {},
+                      onPressed: () {
+                          showSearch(context: context, delegate: DataSearch());
+                      },
                       )
                     ],
                   ),
@@ -79,3 +84,67 @@ class SideBarLayout extends StatelessWidget {
   }
 }
 
+class DataSearch extends SearchDelegate<String>{
+  var _wordservices = WordService();
+
+  var recentS = ["ss"];
+  var search =  [];
+
+  getWords() async {
+    var words = await _wordservices.readWords();
+    return words;
+  }
+
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // TODO: implement buildActions
+    return [ IconButton(icon : Icon(Icons.clear), onPressed: () {
+      query = "";
+    },) ];
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      }
+    );
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    final suggestionList = query.isEmpty ? recentS :
+    search.where((element) => element.starsWith(query)).toList();
+
+    return ListView.builder(
+        itemBuilder: (context , index) => ListTile(
+          leading: Icon(Icons.access_time),
+          title: Text(suggestionList[index]),
+        ),
+      itemCount: suggestionList.length,
+    );
+    throw UnimplementedError();
+  }
+  
+}

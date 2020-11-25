@@ -54,8 +54,9 @@ import 'package:glossary/sidebar/sidebar_layout.dart';
      return MaterialApp(
        debugShowCheckedModeBanner: false,
        theme: ThemeData(
-           scaffoldBackgroundColor: Colors.white,
-           primaryColor: Colors.white
+           scaffoldBackgroundColor: Colors.grey[100],
+           primaryColor: Colors.white,
+           fontFamily: 'Cabin'
        ),
        home: SideBarLayout(),
      );

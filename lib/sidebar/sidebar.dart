@@ -68,7 +68,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  color: const Color(0xFF262AAA),
+                  color: const Color(0xFF4A4A58),
                   child: Column(
                     children: <Widget>[
                       SizedBox(
@@ -82,13 +82,13 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         subtitle: Text(
                           "Faculty of Applied Science",
                           style: TextStyle(
-                            color: Color(0xFF1BB5FD),
+                            color: Colors.blueAccent,
                             fontSize: 12,
                           ),
                         ),
                         leading: CircleAvatar(
                           child: Image.asset('assets/logo.png'),
-                          radius: 40,
+                          radius: 30,
                         ),
                       ),
                       Divider(
@@ -157,7 +157,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                     child: Container(
                       width: 35,
                       height: 110,
-                      color: Color(0xFF262AAA),
+                      color: Color(0xFF4A4A58),
                       alignment: Alignment.centerLeft,
                       child: AnimatedIcon(
                         progress: _animationController.view,
