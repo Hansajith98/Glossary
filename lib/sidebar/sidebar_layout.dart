@@ -88,7 +88,7 @@ class DataSearch extends SearchDelegate<String>{
   var _wordservices = WordService();
 
   var recentS = ["ss"];
-  var search =  [];
+  var search =  ["Ee","##"];
 
   getWords() async {
     var words = await _wordservices.readWords();
