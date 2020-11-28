@@ -47,7 +47,7 @@ class _SSPEWordsState extends State<SSPEWords> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Sport Science & Physical Education', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
+          Text('Sport Science & Physical Education'),
           Expanded(
             child: FutureBuilder(
             future: _wordservices.readWords(),

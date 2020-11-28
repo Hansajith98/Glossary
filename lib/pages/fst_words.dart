@@ -46,7 +46,7 @@ class _FSTWordsState extends State<FSTWords> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Food Science & Techology',style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
+          Text('Food Science & Techology'),
           Expanded(
             child: FutureBuilder(
             future: _wordservices.readWords(),

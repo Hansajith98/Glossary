@@ -45,7 +45,7 @@ class _PSTWordsState extends State<PSTWords> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Physical Science & Technology', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
+          Text('Physical Science & Technology'),
           Expanded(
             child: FutureBuilder(
             future: _wordservices.readWords(),
