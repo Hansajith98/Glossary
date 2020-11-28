@@ -53,34 +53,36 @@ class DBHelp{
     print('Data Read');
     return await connection.query('glossarydata');
   }
+
   readCISData() async {
     var connection = await db;
     String dep = 'CIS';
     print('CIS Data Read');
     return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
   }
+
   readNRData() async {
     var connection = await db;
     String dep = 'NR';
-    print('CIS Data Read');
+    print('NR Data Read');
     return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
   }
   readPSTData() async {
     var connection = await db;
     String dep = 'PST';
-    print('CIS Data Read');
+    print('PST Data Read');
     return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
   }
   readFSTData() async {
     var connection = await db;
     String dep = 'FST';
-    print('CIS Data Read');
+    print('FST Data Read');
     return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
   }
   readSSPEData() async {
     var connection = await db;
     String dep = 'SSPE';
-    print('CIS Data Read');
+    print('SSPE Data Read');
     return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
   }
 

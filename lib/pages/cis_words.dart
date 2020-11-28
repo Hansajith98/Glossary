@@ -48,7 +48,7 @@ class _CISWordsState extends State<CISWords> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Computing & Information Systems'),
+          Text('Computing & Information Systems', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
           Expanded(
             child: FutureBuilder(
               future: _wordservices.readWords(),

@@ -18,15 +18,15 @@ class MenuItem extends StatelessWidget {
             Icon(
               icon,
               color: Colors.cyan,
-              size: 30,
+              size: 20,
             ),
             SizedBox(
               width: 20,
             ),
             Text(
               title,
-              style: TextStyle(fontWeight: FontWeight.w300, fontSize: 26, color: Colors.white),
-            )
+              style: TextStyle(fontWeight: FontWeight.w200, fontSize: 25, color: Colors.white),
+            ),
           ],
         ),
       ),
