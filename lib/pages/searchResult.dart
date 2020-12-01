@@ -8,7 +8,6 @@ class Seacrh extends StatefulWidget {
 }
 
 class _SeacrhState extends State<Seacrh> {
-
   var _word = Word();
   var _words;
   var _wordservices = WordService();
@@ -16,7 +15,7 @@ class _SeacrhState extends State<Seacrh> {
   List<Word> _wordlist = List<Word>();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getWord();
   }
@@ -24,7 +23,7 @@ class _SeacrhState extends State<Seacrh> {
   getWord() async {
     _wordlist = List<Word>();
     _words = await _wordservices.readWords();
-    _words.forEach((_word){
+    _words.forEach((_word) {
       setState(() {
         var wordModel = Word();
 //        print(word['englishword']);
@@ -35,7 +34,7 @@ class _SeacrhState extends State<Seacrh> {
     });
   }
 
-  void searchWord(String keyword){
+  void searchWord(String keyword) {
     _words.where((_word) => _word['englishword'].toLowerCase() == keyword);
     print(_words);
   }
