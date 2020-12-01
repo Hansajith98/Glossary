@@ -22,15 +22,15 @@ class _SSPEWordsState extends State<SSPEWords> {
   List<Word> _wordlist = List<Word>();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getSSPEWord();
   }
 
   getSSPEWord() async {
     _wordlist = List<Word>();
-    var words = await _wordservices.readSSPEWords();
-    words.forEach((word){
+    var words = await _wordservices.readDepartmentWords('SSPE');
+    words.forEach((word) {
       setState(() {
         var wordModel = Word();
 //        print(word['englishword']);
@@ -41,32 +41,39 @@ class _SSPEWordsState extends State<SSPEWords> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Sport Science & Physical Education', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
+          Text('Sport Science & Physical Education',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueGrey[500])),
           Expanded(
             child: FutureBuilder(
-            future: _wordservices.readWords(),
-              builder: (context, AsyncSnapshot snapshot){
-              if(!snapshot.hasData){
-              return Center(child: CircularProgressIndicator(),);
-              }else{
-              return ListView.builder(itemCount:_wordlist.length, itemBuilder: (context, index){
-              return Card(
-                child: ListTile(
-                  title: Text(_wordlist[index].englishWord),
-                  subtitle: Text(_wordlist[index].sinhalaWord),
-                ),
-              );
-            },
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              );
-              }
+              future: _wordservices.readWords(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: _wordlist.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(_wordlist[index].englishWord),
+                          subtitle: Text(_wordlist[index].sinhalaWord),
+                        ),
+                      );
+                    },
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                  );
+                }
               },
             ),
           ),

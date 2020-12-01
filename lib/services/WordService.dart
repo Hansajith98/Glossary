@@ -15,23 +15,7 @@ class WordService {
     return await _dbHelp.readData();
   }
 
-  readCISWords() async {
-    return await _dbHelp.readDepartmentData('CIS');
-  }
-
-  readPSTWords() async {
-    return await _dbHelp.readDepartmentData('PST');
-  }
-
-  readNRWords() async {
-    return await _dbHelp.readDepartmentData('NR');
-  }
-
-  readSSPEWords() async {
-    return await _dbHelp.readDepartmentData('SSPE');
-  }
-
-  readFSTWords() async {
-    return await _dbHelp.readDepartmentData('FST');
+  readDepartmentWords(String department) async {
+    return await _dbHelp.readDepartmentData(department);
   }
 }

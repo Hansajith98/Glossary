@@ -9,6 +9,7 @@ class PST extends StatelessWidget with NavigationStates {
     return new PSTWords();
   }
 }
+
 class PSTWords extends StatefulWidget {
   @override
   _PSTWordsState createState() => _PSTWordsState();
@@ -21,15 +22,15 @@ class _PSTWordsState extends State<PSTWords> {
   List<Word> _wordlist = List<Word>();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getPSTWord();
   }
 
   getPSTWord() async {
     _wordlist = List<Word>();
-    var words = await _wordservices.readPSTWords();
-    words.forEach((word){
+    var words = await _wordservices.readDepartmentWords('PST');
+    words.forEach((word) {
       setState(() {
         var wordModel = Word();
 //        print(word['englishword']);
@@ -45,25 +46,34 @@ class _PSTWordsState extends State<PSTWords> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text('Physical Science & Technology', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueGrey[500])),
+          Text('Physical Science & Technology',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueGrey[500])),
           Expanded(
             child: FutureBuilder(
-            future: _wordservices.readWords(),
-              builder: (context, AsyncSnapshot snapshot){
-              if(!snapshot.hasData){
-                return Center(child: CircularProgressIndicator(),);
-              }else{
-                return ListView.builder(itemCount:_wordlist.length, itemBuilder: (context, index){return Card(
-                  child: ListTile(
-                    title: Text(_wordlist[index].englishWord),
-                    subtitle: Text(_wordlist[index].sinhalaWord),
-                  ),
-              );
-            },
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-                );
-              }
+              future: _wordservices.readWords(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: _wordlist.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(_wordlist[index].englishWord),
+                          subtitle: Text(_wordlist[index].sinhalaWord),
+                        ),
+                      );
+                    },
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                  );
+                }
               },
             ),
           ),
@@ -72,5 +82,3 @@ class _PSTWordsState extends State<PSTWords> {
     );
   }
 }
-
-
