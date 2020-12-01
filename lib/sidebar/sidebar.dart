@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-
 import '../bloc.navigation_bloc/navigation_bloc.dart';
 import '../sidebar/menu_item.dart';
 
@@ -12,7 +10,8 @@ class SideBar extends StatefulWidget {
   _SideBarState createState() => _SideBarState();
 }
 
-class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<SideBar> {
+class _SideBarState extends State<SideBar>
+    with SingleTickerProviderStateMixin<SideBar> {
   AnimationController _animationController;
   StreamController<bool> isSidebarOpenedStreamController;
   Stream<bool> isSidebarOpenedStream;
@@ -22,7 +21,8 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: _animationDuration);
+    _animationController =
+        AnimationController(vsync: this, duration: _animationDuration);
     isSidebarOpenedStreamController = PublishSubject<bool>();
     isSidebarOpenedStream = isSidebarOpenedStreamController.stream;
     isSidebarOpenedSink = isSidebarOpenedStreamController.sink;
@@ -77,7 +77,10 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                       ListTile(
                         title: Text(
                           "Glossary",
-                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w800),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w800),
                         ),
                         subtitle: Text(
                           "Faculty of Applied Science",
@@ -103,7 +106,8 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         title: "CIS",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.CISWordsClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.CISWordsClickedEvent);
                         },
                       ),
                       MenuItem(
@@ -111,7 +115,8 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         title: "PST",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.PSTWordsClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.PSTWordsClickedEvent);
                         },
                       ),
                       MenuItem(
@@ -119,7 +124,8 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         title: "NR",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.NRWordsClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.NRWordsClickedEvent);
                         },
                       ),
                       MenuItem(
@@ -127,7 +133,8 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         title: "FST",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.FSTWordsClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.FSTWordsClickedEvent);
                         },
                       ),
                       MenuItem(
@@ -135,12 +142,17 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         title: "SSPE",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.SSPEWordsClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.SSPEWordsClickedEvent);
                         },
                       ),
                       Align(
                         alignment: Alignment.bottomLeft,
-                        child: Text('Created by @Hansajith',style: TextStyle(color: Color(0xFF262A60), fontSize: 10.0),),
+                        child: Text(
+                          'Created by @Hansajith',
+                          style: TextStyle(
+                              color: Color(0xFF262A60), fontSize: 10.0),
+                        ),
                       ),
                     ],
                   ),
