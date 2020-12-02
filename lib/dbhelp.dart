@@ -4,45 +4,45 @@ import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
-class DBHelp{
-
+class DBHelp {
   static final String tname = "Dictionary";
   static Database dbExist;
 
-  Future <Database> get  db async{
-    if(dbExist != null){
-      print('DB Status'+'DB Already Exist');
+  Future<Database> get db async {
+    if (dbExist != null) {
+      print('DB Status' + 'DB Already Exist');
       return dbExist;
-    }else {
-      print('DB Status'+'DB Not Exist');
+    } else {
+      print('DB Status' + 'DB Not Exist');
       dbExist = await initDB();
       return dbExist;
     }
   }
 
   Future initDB() async {
-    final dbpath = await  getDatabasesPath();
-    final path = join(dbpath,'glossary.db');
+    final dbpath = await getDatabasesPath();
+    final path = join(dbpath, 'glossary.db');
 
     final exist = await databaseExists(path);
     print(exist);
 
-    if(!exist){
-      print('DB Status'+'Creating new copy from assets');
-      try{
-        await Directory(dirname(path)).create(recursive:true);
-      }catch(_){}
+    if (!exist) {
+      print('DB Status' + 'Creating new copy from assets');
+      try {
+        await Directory(dirname(path)).create(recursive: true);
+      } catch (_) {}
 
-      ByteData data = await rootBundle.load(join('assets','glossary.db'));
-      List<int> bytes = data.buffer.asUint8List(data.offsetInBytes,data.lengthInBytes);
+      ByteData data = await rootBundle.load(join('assets', 'glossary.db'));
+      List<int> bytes =
+          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
-      await File(path).writeAsBytes(bytes ,flush: true);
-
-    }else{
-      print('DB Status'+'Opening Database');
+      await File(path).writeAsBytes(bytes, flush: true);
+    } else {
+      print('DB Status' + 'Opening Database');
     }
     return await openDatabase(path);
   }
+
   insertData(table, data) async {
     var connection = await db;
     return await connection.insert(table, data);
@@ -54,36 +54,10 @@ class DBHelp{
     return await connection.query('glossarydata');
   }
 
-  readCISData() async {
+  readDepartmentData(String department) async {
     var connection = await db;
-    String dep = 'CIS';
-    print('CIS Data Read');
-    return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
+    print('Data Read from $department');
+    return await connection.query('glossarydata',
+        where: 'department = ?', whereArgs: [department]);
   }
-
-  readNRData() async {
-    var connection = await db;
-    String dep = 'NR';
-    print('NR Data Read');
-    return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
-  }
-  readPSTData() async {
-    var connection = await db;
-    String dep = 'PST';
-    print('PST Data Read');
-    return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
-  }
-  readFSTData() async {
-    var connection = await db;
-    String dep = 'FST';
-    print('FST Data Read');
-    return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
-  }
-  readSSPEData() async {
-    var connection = await db;
-    String dep = 'SSPE';
-    print('SSPE Data Read');
-    return await connection.query('glossarydata', where: 'department = ?', whereArgs: [dep]);
-  }
-
 }

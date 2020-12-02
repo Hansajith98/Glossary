@@ -10,7 +10,6 @@ import 'dart:async';
 import '../pages/searchResult.dart';
 
 class SideBarLayout extends StatelessWidget {
-
   TextEditingController _controller = TextEditingController();
 
   Timer _debounce;
@@ -27,48 +26,55 @@ class SideBarLayout extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  margin: const EdgeInsets.only(bottom: 10.0,top: 40.0),
+                  margin: const EdgeInsets.only(bottom: 10.0, top: 40.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Expanded(
                         child: Container(
-                          margin: const EdgeInsets.only(left: 45.0,),
+                          margin: const EdgeInsets.only(
+                            left: 45.0,
+                          ),
                           decoration: BoxDecoration(
-                          color: Colors.blue[50],
-                          borderRadius: BorderRadius.circular(24.0),
+                            color: Colors.blue[50],
+                            borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: TextFormField(
                             onTap: () {
-                            showSearch(context: context, delegate: DataSearch());
+                              showSearch(
+                                  context: context, delegate: DataSearch());
                             },
                             onChanged: (String text) {
-                            if (_debounce?.isActive ?? false) _debounce.cancel();
-                            _debounce = Timer(const Duration(milliseconds: 1000), () {});
-                            //search.searchWord(text);
+                              if (_debounce?.isActive ?? false)
+                                _debounce.cancel();
+                              _debounce = Timer(
+                                  const Duration(milliseconds: 1000), () {});
+                              //search.searchWord(text);
                             },
                             controller: _controller,
                             decoration: InputDecoration(
-                            hintText: "Search for a word",
-                            contentPadding: const EdgeInsets.only(left: 24.0),
-                            border: InputBorder.none,
+                              hintText: "Search for a word",
+                              contentPadding: const EdgeInsets.only(left: 24.0),
+                              border: InputBorder.none,
                             ),
                           ),
                         ),
                       ),
                       IconButton(
                         icon: Icon(
-                        Icons.search,
-                        color: Colors.blueAccent,
+                          Icons.search,
+                          color: Colors.blueAccent,
                         ),
-                      onPressed: () {
+                        onPressed: () {
                           showSearch(context: context, delegate: DataSearch());
-                      },
+                        },
                       )
                     ],
                   ),
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 BlocBuilder<NavigationBloc, NavigationStates>(
                   builder: (context, navigationState) {
                     return navigationState as Widget;
@@ -84,24 +90,28 @@ class SideBarLayout extends StatelessWidget {
   }
 }
 
-class DataSearch extends SearchDelegate<String>{
+class DataSearch extends SearchDelegate<String> {
   var _wordservices = WordService();
 
   var recentS = ["ss"];
-  var search =  ["Ee","##"];
+  var search = ["Ee", "##"];
 
   getWords() async {
     var words = await _wordservices.readWords();
     return words;
   }
 
-
   @override
   List<Widget> buildActions(BuildContext context) {
     // TODO: implement buildActions
-    return [ IconButton(icon : Icon(Icons.clear), onPressed: () {
-      query = "";
-    },) ];
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = "";
+        },
+      )
+    ];
     throw UnimplementedError();
   }
 
@@ -109,19 +119,18 @@ class DataSearch extends SearchDelegate<String>{
   Widget buildLeading(BuildContext context) {
     // TODO: implement buildLeading
     return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
-      ),
-      onPressed: () {
-        Navigator.pop(context);
-        FocusScopeNode currentFocus = FocusScope.of(context);
+        icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow,
+          progress: transitionAnimation,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+          FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      }
-    );
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        });
     throw UnimplementedError();
   }
 
@@ -134,17 +143,17 @@ class DataSearch extends SearchDelegate<String>{
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
-    final suggestionList = query.isEmpty ? recentS :
-    search.where((element) => element.starsWith(query)).toList();
+    final suggestionList = query.isEmpty
+        ? recentS
+        : search.where((element) => element.startsWith(query)).toList();
 
     return ListView.builder(
-        itemBuilder: (context , index) => ListTile(
-          leading: Icon(Icons.access_time),
-          title: Text(suggestionList[index]),
-        ),
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(Icons.access_time),
+        title: Text(suggestionList[index]),
+      ),
       itemCount: suggestionList.length,
     );
     throw UnimplementedError();
   }
-  
 }

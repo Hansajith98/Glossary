@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:glossary/pages/pst_words.dart';
-import '../pages/nr_words.dart';
-import '../pages/cis_words.dart';
-import '../pages/fst_words.dart';
-import '../pages/sspe_words.dart';
+import 'package:flutter/widgets.dart';
+import '../pages/department_words.dart';
 
 enum NavigationEvents {
   CISWordsClickedEvent,
@@ -17,25 +14,43 @@ abstract class NavigationStates {}
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   @override
-  NavigationStates get initialState => CIS();
+  NavigationStates get initialState => DepartmentWords(
+        department: 'CIS',
+        key: ValueKey('CIS'),
+      );
 
   @override
   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {
     switch (event) {
       case NavigationEvents.CISWordsClickedEvent:
-        yield CIS();
+        yield DepartmentWords(
+          department: 'CIS',
+          key: ValueKey('CIS'),
+        );
         break;
       case NavigationEvents.PSTWordsClickedEvent:
-        yield PST();
+        yield DepartmentWords(
+          department: 'PST',
+          key: ValueKey('PST'),
+        );
         break;
       case NavigationEvents.NRWordsClickedEvent:
-        yield NR();
+        yield DepartmentWords(
+          department: 'NR',
+          key: ValueKey('NR'),
+        );
         break;
       case NavigationEvents.FSTWordsClickedEvent:
-        yield FST();
+        yield DepartmentWords(
+          department: 'FST',
+          key: ValueKey('FST'),
+        );
         break;
       case NavigationEvents.SSPEWordsClickedEvent:
-        yield SSPE();
+        yield DepartmentWords(
+          department: 'SSPE',
+          key: ValueKey('SSPE'),
+        );
         break;
     }
   }
