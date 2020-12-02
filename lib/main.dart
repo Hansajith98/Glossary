@@ -3,38 +3,35 @@ import 'package:glossary/dbhelp.dart';
 import 'package:glossary/repository/repository.dart';
 import 'dart:async';
 
-import 'package:glossary/sidebar/sidebar_layout.dart';
+import 'package:glossary/sidebar/home.dart';
 
- void main(){
-   runApp(
-     MaterialApp(
-       home: MyApp(),
-     )
-   );
- }
- 
- class MyApp extends StatefulWidget {
-   @override
-   _MyAppState createState() => _MyAppState();
- }
- 
- class _MyAppState extends State<MyApp> {
+void main() {
+  runApp(MaterialApp(
+    home: MyApp(),
+  ));
+}
 
-   TextEditingController _controller = TextEditingController();
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-   StreamController _streamController;
-   Stream _stream;
+class _MyAppState extends State<MyApp> {
+  TextEditingController _controller = TextEditingController();
 
-   Timer _debounce;
+  StreamController _streamController;
+  Stream _stream;
 
-   DBHelp dbHelp;
-   Repository repository;
+  Timer _debounce;
 
-   _search() async {
-     //---------
-   }
+  DBHelp dbHelp;
+  Repository repository;
 
-   @override
+  _search() async {
+    //---------
+  }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -44,22 +41,19 @@ import 'package:glossary/sidebar/sidebar_layout.dart';
 
 //    dbHelp = new DBHelp();
 //    dbHelp.db;
-      repository = new Repository();
-      repository.database;
-
+    repository = new Repository();
+    repository.database;
   }
 
-   @override
-   Widget build(BuildContext context) {
-     return MaterialApp(
-       debugShowCheckedModeBanner: false,
-       theme: ThemeData(
-           scaffoldBackgroundColor: Colors.grey[100],
-           primaryColor: Colors.white,
-           fontFamily: 'Cabin'
-       ),
-       home: SideBarLayout(),
-     );
-   }
- }
- 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          scaffoldBackgroundColor: Colors.grey[100],
+          primaryColor: Colors.white,
+          fontFamily: 'Cabin'),
+      home: SideBarLayout(),
+    );
+  }
+}
