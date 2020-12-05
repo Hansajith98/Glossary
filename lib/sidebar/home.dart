@@ -26,7 +26,7 @@ class _SideBarLayoutState extends State<SideBarLayout> {
       child: Scaffold(
         drawer: SideMenue(),
         appBar: AppBar(
-          title: Text('Glossary'),
+          title: Align(alignment: Alignment.center, child: Text('Glossary')),
           actions: [
             IconButton(
               icon: Icon(

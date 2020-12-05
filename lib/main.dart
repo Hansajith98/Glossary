@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:glossary/dbhelp.dart';
 import 'package:glossary/repository/repository.dart';
 import 'dart:async';
-
 import 'package:glossary/sidebar/home.dart';
 
 void main() {
