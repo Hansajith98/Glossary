@@ -54,6 +54,24 @@ class DBHelp {
     return await connection.query('glossarydata');
   }
 
+  searchData(String words) async {
+    var connection = await db;
+    var word = await connection.query('glossarydata',
+        columns: ['englishword', 'sinhalaword'],
+        where: "englishword = ?",
+        whereArgs: [words]);
+    return word;
+  }
+
+  suggestData(String words) async {
+    var connection = await db;
+    var word = await connection.query('glossarydata',
+        columns: ['englishword', 'sinhalaword'],
+        where: "englishword like ?",
+        whereArgs: [words + '%']);
+    return word;
+  }
+
   readDepartmentData(String department) async {
     var connection = await db;
     print('Data Read from $department');
