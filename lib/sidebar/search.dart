@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class DataSearch extends SearchDelegate<String> {
   var _wordservices = WordService();
 
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -45,7 +46,7 @@ class DataSearch extends SearchDelegate<String> {
           return ListView.builder(
             itemCount: resultList.length,
             itemBuilder: (context, index) => ListTile(
-                leading: Icon(Icons.access_time),
+              contentPadding: EdgeInsets.symmetric(horizontal: 25),
                 title: Text(resultList[index]['englishword']),
                 subtitle: Text(resultList[index]['sinhalaword'])),
           );
@@ -63,8 +64,19 @@ class DataSearch extends SearchDelegate<String> {
             List<Map> suggestionList = snapshot.data;
             return ListView.builder(
               itemBuilder: (context, index) => ListTile(
+                onTap: (){
+                    query = suggestionList[index]['englishword'];
+                    showResults(context);
+                  },
                 leading: Icon(Icons.access_time),
-                title: Text(suggestionList[index]['englishword']),
+                title: RichText(text: TextSpan(
+                  text: suggestionList[index]['englishword'].substring(0,query.length),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
+                  children: [TextSpan(
+                    text: suggestionList[index]['englishword'].substring(query.length),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+                  )],
+                ),),
               ),
               itemCount: suggestionList.length,
             );
