@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class DataSearch extends SearchDelegate<String> {
   var _wordservices = WordService();
 
-
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -41,15 +40,18 @@ class DataSearch extends SearchDelegate<String> {
     return FutureBuilder<Object>(
         future: resultList,
         builder: (context, snapshot) {
-          List<Map> resultList = snapshot.data;
-          print(resultList);
-          return ListView.builder(
-            itemCount: resultList.length,
-            itemBuilder: (context, index) => ListTile(
-              contentPadding: EdgeInsets.symmetric(horizontal: 25),
-                title: Text(resultList[index]['englishword']),
-                subtitle: Text(resultList[index]['sinhalaword'])),
-          );
+          if (snapshot.hasData == true) {
+            List<Map> resultList = snapshot.data;
+            return ListView.builder(
+              itemCount: resultList.length,
+              itemBuilder: (context, index) => ListTile(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                  title: Text(resultList[index]['englishword']),
+                  subtitle: Text(resultList[index]['sinhalaword'])),
+            );
+          } else {
+            return Container();
+          }
         });
   }
 
@@ -64,19 +66,27 @@ class DataSearch extends SearchDelegate<String> {
             List<Map> suggestionList = snapshot.data;
             return ListView.builder(
               itemBuilder: (context, index) => ListTile(
-                onTap: (){
-                    query = suggestionList[index]['englishword'];
-                    showResults(context);
-                  },
+                onTap: () {
+                  query = suggestionList[index]['englishword'];
+                  showResults(context);
+                },
                 leading: Icon(Icons.access_time),
-                title: RichText(text: TextSpan(
-                  text: suggestionList[index]['englishword'].substring(0,query.length),
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
-                  children: [TextSpan(
-                    text: suggestionList[index]['englishword'].substring(query.length),
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
-                  )],
-                ),),
+                title: RichText(
+                  text: TextSpan(
+                    text: suggestionList[index]['englishword']
+                        .substring(0, query.length),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black54),
+                    children: [
+                      TextSpan(
+                        text: suggestionList[index]['englishword']
+                            .substring(query.length),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ),
               ),
               itemCount: suggestionList.length,
             );

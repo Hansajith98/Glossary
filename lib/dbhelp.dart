@@ -5,7 +5,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 class DBHelp {
-  static final String tname = "Dictionary";
   static Database dbExist;
 
   Future<Database> get db async {

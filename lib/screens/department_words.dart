@@ -15,7 +15,6 @@ class _DepartmentWordsState extends State<DepartmentWords> {
   String department;
   _DepartmentWordsState({this.department});
 
-  var _word = Word();
   var _wordservices = WordService();
 
   List<Word> _wordlist = List<Word>();
@@ -41,30 +40,27 @@ class _DepartmentWordsState extends State<DepartmentWords> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          Text(department,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey[500])),
-          Expanded(
-              child: ListView.builder(
-            itemCount: _wordlist.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(_wordlist[index].englishWord),
-                  subtitle: Text(_wordlist[index].sinhalaWord),
-                ),
-              );
-            },
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-          )),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        Text(department,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey[500])),
+        ListView.builder(
+          itemCount: _wordlist.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                title: Text(_wordlist[index].englishWord),
+                subtitle: Text(_wordlist[index].sinhalaWord),
+              ),
+            );
+          },
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+        ),
+      ],
     );
   }
 }

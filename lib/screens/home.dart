@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:glossary/pages/searchResult.dart';
-import 'package:glossary/sidebar/search.dart';
-import 'package:glossary/sidebar/sidebar.dart';
+import 'package:glossary/screens/search.dart';
+import 'package:glossary/screens/sidebar.dart';
 import '../bloc.navigation_bloc/navigation_bloc.dart';
-import 'dart:async';
-import '../pages/searchResult.dart';
 
-class SideBarLayout extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _SideBarLayoutState createState() => _SideBarLayoutState();
+  _HomeState createState() => _HomeState();
 }
 
-class _SideBarLayoutState extends State<SideBarLayout> {
-  TextEditingController _controller = TextEditingController();
-
-  Timer _debounce;
-
-  Seacrh search = new Seacrh();
-
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<NavigationBloc>(

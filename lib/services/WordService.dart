@@ -1,8 +1,6 @@
-import 'package:glossary/repository/repository.dart';
 import 'package:glossary/dbhelp.dart';
 
 class WordService {
-  Repository _repository;
   DBHelp _dbHelp;
 
   WordService() {

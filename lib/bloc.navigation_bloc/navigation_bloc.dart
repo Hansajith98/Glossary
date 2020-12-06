@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
-import '../pages/department_words.dart';
+import '../screens/department_words.dart';
 
 enum NavigationEvents {
   CISWordsClickedEvent,
