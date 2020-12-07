@@ -1,3 +1,6 @@
+import 'dart:async';
+//import 'dart:js';
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:glossary/screens/home.dart';
@@ -7,30 +10,17 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: Color(0xffffffff),
+          color: Color(0xF0F0F0F0),
         ),
         padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
         child: Column(
           children: [
-            Image(image: AssetImage('assets/logo.png')),
             Expanded(
               child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: 150,
-                  height: 50,
-                  child: RaisedButton(
-                    color: Color(0xff520103),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Text(
-                      'Continue',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
+                alignment: Alignment.center,
+                child: Image(image: AssetImage('assets/logo.png'),
+                  height: 180,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -39,23 +29,26 @@ class LoadingScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                'Main Students Union ',
+                "Main Students' Union ",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     decoration: TextDecoration.none,
                     fontSize: 16,
-                    color: Colors.black),
+                    color: Colors.black54),
               ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                'Sabragamuwa University of Sri Lanka',
+                'Sabragamuwa University of \nSri Lanka',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     decoration: TextDecoration.none,
                     fontSize: 16,
-                    color: Colors.black),
+                    color: Colors.black54),
               ),
             ),
+            SizedBox(height: 10,),
           ],
         ));
   }
