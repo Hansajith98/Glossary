@@ -1,12 +1,48 @@
 import 'dart:async';
-//import 'dart:js';
 
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:glossary/screens/home.dart';
+
+import 'home.dart';
 
 
-class LoadingScreen extends StatelessWidget {
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+
+    super.initState();
+    displaySplash();
+  }
+
+  displaySplash(){
+    Timer(Duration(seconds: 4), () async{
+      Navigator.push(context,
+          PageRouteBuilder(
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (context,animation , animationTime , child){
+                animation =CurvedAnimation(parent: animation , curve: Curves.elasticOut);
+                return ScaleTransition(
+                  scale:animation,
+                  child: child,
+                  alignment: Alignment.center,
+
+                );
+              },
+              pageBuilder: (context , animation , animationTime){
+                return Home();
+              }
+          ));
+    });
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +57,7 @@ class LoadingScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Image(image: AssetImage('assets/logo.png'),
                   height: 180,
-                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -51,6 +87,7 @@ class LoadingScreen extends StatelessWidget {
             ),
             SizedBox(height: 10,),
           ],
-        ));
+        )
+    );
   }
 }
