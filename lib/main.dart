@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:glossary/screens/home.dart';
 import 'package:glossary/screens/loadingScreen.dart';
 
-import 'screens/loadingScreen.dart';
-
 void main() {
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
@@ -25,7 +22,7 @@ class _MyAppState extends State<MyApp> {
           scaffoldBackgroundColor: Colors.grey[100],
           primaryColor: Colors.white,
           fontFamily: 'Cabin'),
-      home: SplashScreen(),
+      home: LoadingScreen(),
     );
   }
 }
