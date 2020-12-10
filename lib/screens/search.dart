@@ -88,7 +88,7 @@ class DataSearch extends SearchDelegate<String> {
                   ),
                 ),
               ),
-              itemCount: suggestionList.length,
+              itemCount: suggestionList.length<5 ? suggestionList.length:5,
             );
           } else {
             return Container();
