@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Expanded(
               child: Align(
                 alignment: Alignment.center,
-                child: Image(image: AssetImage('assets/logo.png'),
+                child: Image(image: AssetImage('assets/uniLogo.png'),
                   height: 180,
                 ),
               ),

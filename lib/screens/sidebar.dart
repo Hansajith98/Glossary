@@ -11,6 +11,9 @@ class _SideMenueState extends State<SideMenue> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Color(0x11111111),
+      ),
       width: 250,
       child: Drawer(
         child: SingleChildScrollView(
@@ -22,7 +25,7 @@ class _SideMenueState extends State<SideMenue> {
               ),
 
               Image(
-                image: AssetImage('assets/logo.png'),
+                image: AssetImage('assets/mainLogo.png'),
                 width: 100,
                 height: 100,
               ),
@@ -87,7 +90,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Agri business managment'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CISWordsClickedEvent);
+                            .add(NavigationEvents.ABMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -95,7 +98,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Exprt agri culture'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.EACWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -103,7 +106,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Live stock production'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.NRWordsClickedEvent);
+                            .add(NavigationEvents.LSPWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -121,7 +124,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Accountancy and Finance'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CISWordsClickedEvent);
+                            .add(NavigationEvents.AFWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -129,7 +132,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Business Managment'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.BMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -137,7 +140,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Marketing Managment'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.NRWordsClickedEvent);
+                            .add(NavigationEvents.MMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -145,7 +148,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Tourism Managment'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.NRWordsClickedEvent);
+                            .add(NavigationEvents.TMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -161,7 +164,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Economics and statistics'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CISWordsClickedEvent);
+                            .add(NavigationEvents.ESWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -169,7 +172,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('English language and teaching'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.ELTWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -177,7 +180,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Geography and Environmental Managment'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.NRWordsClickedEvent);
+                            .add(NavigationEvents.GEMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -185,7 +188,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Languages'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.NRWordsClickedEvent);
+                            .add(NavigationEvents.LanWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -193,7 +196,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Social Sciences'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.NRWordsClickedEvent);
+                            .add(NavigationEvents.SSWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -208,7 +211,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Remote sensing and GIS'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CISWordsClickedEvent);
+                            .add(NavigationEvents.RSGISWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -216,7 +219,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Surveying and Geodesy'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.SGWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -231,7 +234,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('BioSystems Technology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CISWordsClickedEvent);
+                            .add(NavigationEvents.BSTWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -239,7 +242,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Engineering Technology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.ETWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -254,7 +257,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Anatomy'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CISWordsClickedEvent);
+                            .add(NavigationEvents.AnaWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -262,7 +265,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Biochemistry'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.BioCWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -270,7 +273,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Community Medicine'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.CMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -278,7 +281,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Family Medicine'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.FMWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -286,15 +289,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Forensic Medicine & Toxicology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Biochemistry'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.FMTWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -302,7 +297,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Medicine'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.MedWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -310,7 +305,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Microbiology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.MicroBWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -318,7 +313,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Obstetrics And Gynaecology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.OGWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -326,7 +321,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Paediatrics'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.PaedWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -334,7 +329,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Pathology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.PathWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -342,7 +337,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Pharmacology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.PharWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -350,7 +345,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Physiology'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.PhysWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -358,7 +353,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Psychiatry'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.PsyWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
@@ -366,7 +361,7 @@ class _SideMenueState extends State<SideMenue> {
                       title: Text('Surgery'),
                       onTap: () {
                         BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PSTWordsClickedEvent);
+                            .add(NavigationEvents.SurWordsClickedEvent);
                         Navigator.pop(context);
                       },
                     ),
