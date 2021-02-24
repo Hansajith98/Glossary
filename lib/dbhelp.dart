@@ -56,7 +56,7 @@ class DBHelp {
   searchData(String words) async {
     var connection = await db;
     var word = await connection.query('glossarydata',
-        columns: ['englishword', 'sinhalaword'],
+        columns: ['englishword', 'sinhalaword', 'otherword'],
         where: "englishword = ?",
         whereArgs: [words]);
     return word;

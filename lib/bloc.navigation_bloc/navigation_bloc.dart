@@ -46,6 +46,7 @@ abstract class NavigationStates {}
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   @override
   NavigationStates get initialState => DepartmentWords(
+        name: 'Computing and information systems',
         department: 'CIS',
         key: ValueKey('CIS'),
       );
@@ -55,125 +56,146 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
     switch (event) {
       case NavigationEvents.CISWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Computing and information systems',
           department: 'CIS',
           key: ValueKey('CIS'),
         );
         break;
       case NavigationEvents.PSTWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Physical science and technology',
           department: 'PST',
           key: ValueKey('PST'),
         );
         break;
       case NavigationEvents.NRWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Natural resource managment',
           department: 'NR',
           key: ValueKey('NR'),
         );
         break;
       case NavigationEvents.FSTWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Food science technology',
           department: 'FST',
           key: ValueKey('FST'),
         );
         break;
       case NavigationEvents.SSPEWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Sport science and physical education',
           department: 'SSPE',
           key: ValueKey('SSPE'),
         );
         break;
       case NavigationEvents.ABMWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Agri business managment',
           department: 'ABM',
           key: ValueKey('ABM'),
         );
         break;
       case NavigationEvents.EACWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Exprt agri culture',
           department: 'EAC',
           key: ValueKey('EAC'),
         );
         break;
       case NavigationEvents.LSPWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Live stock production',
           department: 'LSP',
           key: ValueKey('LSP'),
         );
         break;
       case NavigationEvents.AFWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Accountancy and Finance',
           department: 'AF',
           key: ValueKey('AF'),
         );
         break;
       case NavigationEvents.BMWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Business Managment',
           department: 'BM',
           key: ValueKey('BM'),
         );
         break;
       case NavigationEvents.MMWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Marketing Managment',
           department: 'MM',
           key: ValueKey('MM'),
         );
         break;
       case NavigationEvents.TMWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Tourism Managment',
           department: 'TM',
           key: ValueKey('TM'),
         );
         break;
       case NavigationEvents.ESWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Economics and statistics',
           department: 'ES',
           key: ValueKey('ES'),
         );
         break;
       case NavigationEvents.ELTWordsClickedEvent:
         yield DepartmentWords(
+          name: 'English language and teaching',
           department: 'ELT',
           key: ValueKey('ELT'),
         );
         break;
       case NavigationEvents.GEMWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Geography and Environmental Managment',
           department: 'GEM',
           key: ValueKey('GEM'),
         );
         break;
       case NavigationEvents.LanWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Languages',
           department: 'Lan',
           key: ValueKey('Lan'),
         );
         break;
       case NavigationEvents.SSWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Social Sciences',
           department: 'SS',
           key: ValueKey('SS'),
         );
         break;
       case NavigationEvents.RSGISWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Remote sensing and GIS',
           department: 'RSGIS',
           key: ValueKey('RSGIS'),
         );
         break;
       case NavigationEvents.SGWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Surveying and Geodesy',
           department: 'SG',
           key: ValueKey('SG'),
         );
         break;case NavigationEvents.BSTWordsClickedEvent:
       yield DepartmentWords(
+        name: 'BioSystems Technology',
         department: 'BST',
         key: ValueKey('BST'),
       );
       break;
       case NavigationEvents.ETWordsClickedEvent:
         yield DepartmentWords(
+          name: 'Engineering Technology',
           department: 'ET',
           key: ValueKey('ET'),
         );

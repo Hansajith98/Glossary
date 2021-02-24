@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glossary/services/WordService.dart';
 import 'package:glossary/models/word.dart';
@@ -5,15 +6,18 @@ import '../bloc.navigation_bloc/navigation_bloc.dart';
 
 class DepartmentWords extends StatefulWidget with NavigationStates {
   final department;
-  const DepartmentWords({Key key, this.department}) : super(key: key);
+  final name;
+  const DepartmentWords({Key key, this.department, this.name}) : super(key: key);
   @override
   _DepartmentWordsState createState() =>
-      _DepartmentWordsState(department: this.department);
+      _DepartmentWordsState(department: this.department, name: this.name);
 }
 
 class _DepartmentWordsState extends State<DepartmentWords> {
   String department;
-  _DepartmentWordsState({this.department});
+  String name;
+
+  _DepartmentWordsState({this.department, this.name});
 
   var _wordservices = WordService();
 
@@ -22,10 +26,10 @@ class _DepartmentWordsState extends State<DepartmentWords> {
   @override
   void initState() {
     super.initState();
-    getWords(department);
+    getWords(department, name);
   }
 
-  getWords(String department) async {
+  getWords(String department, String name) async {
     _wordlist = List<Word>();
     var words = await _wordservices.readDepartmentWords(department);
     words.forEach((word) {
@@ -33,6 +37,7 @@ class _DepartmentWordsState extends State<DepartmentWords> {
         var wordModel = Word();
         wordModel.englishWord = word['englishword'];
         wordModel.sinhalaWord = word['sinhalaword'];
+        wordModel.otherWord = word['otherword'];
         _wordlist.add(wordModel);
       });
     });
@@ -43,11 +48,13 @@ class _DepartmentWordsState extends State<DepartmentWords> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text(department,
+          Text(name,
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey[500])),
+                  color: Colors.blueGrey[500]),
+            textAlign: TextAlign.center,
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: _wordlist.length,
@@ -55,7 +62,13 @@ class _DepartmentWordsState extends State<DepartmentWords> {
                 return Card(
                   child: ListTile(
                     title: Text(_wordlist[index].englishWord),
-                    subtitle: Text(_wordlist[index].sinhalaWord),
+                    subtitle: Column(
+                      children: <Widget>[
+                        Text(_wordlist[index].sinhalaWord),
+                        Text(_wordlist[index].otherWord != null?_wordlist[index].otherWord:"")
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
                   ),
                 );
               },

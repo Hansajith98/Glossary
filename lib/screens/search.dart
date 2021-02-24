@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:glossary/services/WordService.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,14 @@ class DataSearch extends SearchDelegate<String> {
               itemBuilder: (context, index) => ListTile(
                   contentPadding: EdgeInsets.symmetric(horizontal: 25),
                   title: Text(resultList[index]['englishword']),
-                  subtitle: Text(resultList[index]['sinhalaword'])),
+                subtitle: Column(
+                  children: <Widget>[
+                    Text(resultList[index]['sinhalaword']),
+                    Text(resultList[index]['otherword'] != null?resultList[index]['otherword']:"")
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              )
             );
           } else {
             return Container();

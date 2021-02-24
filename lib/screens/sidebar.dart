@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideMenue extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _SideMenueState extends State<SideMenue> {
               ),
 
               Image(
-                image: AssetImage('assets/mainLogo.png'),
+                image: AssetImage('assets/mainLogo.jpg'),
                 width: 100,
                 height: 100,
               ),
@@ -79,7 +80,6 @@ class _SideMenueState extends State<SideMenue> {
                   ]),
 
               // Faculty of Agriculture
-
               ExpansionTile(
                   title: Text(
                     'Agriculture',
@@ -247,132 +247,33 @@ class _SideMenueState extends State<SideMenue> {
                       },
                     ),
                   ]),
-
-              // faculty of medicine
-
-              ExpansionTile(
-                  title: Text('Medicine', style: TextStyle(fontSize: 16)),
-                  children: [
-                    ListTile(
-                      title: Text('Anatomy'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.AnaWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Biochemistry'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.BioCWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Community Medicine'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.CMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Family Medicine'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.FMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Forensic Medicine & Toxicology'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.FMTWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Medicine'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.MedWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Microbiology'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.MicroBWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Obstetrics And Gynaecology'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.OGWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Paediatrics'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PaedWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Pathology'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PathWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Pharmacology'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PharWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Physiology'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PhysWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Psychiatry'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.PsyWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Surgery'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.SurWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ]),
               Align(
                 alignment: Alignment.center,
-                child: Text('Main Students Union '),
+                child: Text('Main Students Union'),
               ),
               Align(
                 alignment: Alignment.center,
-                child: Text('Sabragamuwa University of Sri Lanka '),
+                child: Text('Sabragamuwa University of Sri Lanka'),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Source Code '),
+                      ImageIcon(
+                        AssetImage('assets/github.png'),
+                        size: 40,
+                      ),
+                      ImageIcon(
+                        AssetImage('assets/GitHub-Mark-32px.png'),
+                        size: 20,
+                      ),
+                    ],
+                  ),
+                  onTap: () => launch("https://github.com/Hansajith98/Glossary"),
+                ),
               ),
             ],
           ),
