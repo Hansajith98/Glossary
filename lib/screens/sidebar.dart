@@ -79,152 +79,6 @@ class _SideMenueState extends State<SideMenue> {
                     ),
                   ]),
 
-              // Faculty of Agriculture
-              ExpansionTile(
-                  title: Text(
-                    'Agriculture',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  children: [
-                    ListTile(
-                      title: Text('Agri business managment'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.ABMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Exprt agri culture'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.EACWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Live stock production'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.LSPWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ]),
-
-              // faculty of managment studies
-
-              ExpansionTile(
-                  title: Text(
-                    'Management studies',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  children: [
-                    ListTile(
-                      title: Text('Accountancy and Finance'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.AFWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Business Managment'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.BMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Marketing Managment'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.MMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Tourism Managment'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.TMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ]),
-
-              // faculty of social sciences and languages
-
-              ExpansionTile(
-                  title: Text('Social Sciences and Languages',
-                      style: TextStyle(fontSize: 16)),
-                  children: [
-                    ListTile(
-                      title: Text('Economics and statistics'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.ESWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('English language and teaching'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.ELTWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Geography and Environmental Managment'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.GEMWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Languages'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.LanWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Social Sciences'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.SSWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ]),
-
-              // faculty of geomatics
-
-              ExpansionTile(
-                  title: Text('Geomatics', style: TextStyle(fontSize: 16)),
-                  children: [
-                    ListTile(
-                      title: Text('Remote sensing and GIS'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.RSGISWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Surveying and Geodesy'),
-                      onTap: () {
-                        BlocProvider.of<NavigationBloc>(context)
-                            .add(NavigationEvents.SGWordsClickedEvent);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ]),
-
               // faculty of technology
 
               ExpansionTile(
@@ -247,13 +101,70 @@ class _SideMenueState extends State<SideMenue> {
                       },
                     ),
                   ]),
-              Align(
-                alignment: Alignment.center,
-                child: Text('Main Students Union'),
+
+              // faculty of Agriculture
+
+              ListTile(
+                title: Text('Agriculture'),
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvents.AGRWordsClickedEvent);
+                  Navigator.pop(context);
+                },
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text('Sabragamuwa University of Sri Lanka'),
+
+              // faculty of managment studies
+
+              ListTile(
+                title: Text('Management Studies'),
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvents.MGMTWordsClickedEvent);
+                  Navigator.pop(context);
+                },
+              ),
+
+              // faculty of social sciences and languages
+
+              ListTile(
+                title: Text('Social Sciences and Languages'),
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvents.FSSLWordsClickedEvent);
+                  Navigator.pop(context);
+                },
+              ),
+
+              // faculty of geomatics
+
+              ListTile(
+                title: Text('Geomatics'),
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvents.GEOWordsClickedEvent);
+                  Navigator.pop(context);
+                },
+              ),
+
+//              Align(
+//                alignment: Alignment.center,
+//                child: Text('Main Students Union'),
+//              ),
+//              Align(
+//                alignment: Alignment.center,
+//                child: Text('Sabragamuwa University of Sri Lanka'),
+//              ),
+              ListTile(
+                leading: null,
+                title: Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Text('Main Students Union ',style: TextStyle(fontSize: 15.0),textAlign: TextAlign.center),
+                      Text('Sabragamuwa University of Sri Lanka ',textAlign: TextAlign.center,style: TextStyle(fontSize: 15.0),),
+                    ],
+                  ),
+                ),
               ),
               Align(
                 alignment: Alignment.center,

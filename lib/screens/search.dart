@@ -50,7 +50,7 @@ class DataSearch extends SearchDelegate<String> {
                   title: Text(resultList[index]['englishword']),
                 subtitle: Column(
                   children: <Widget>[
-                    Text(resultList[index]['sinhalaword']),
+                    Text(resultList[index]['sinhalaword'] != null?resultList[index]['sinhalaword']:""),
                     Text(resultList[index]['otherword'] != null?resultList[index]['otherword']:"")
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,

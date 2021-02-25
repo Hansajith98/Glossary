@@ -50,12 +50,12 @@ class DBHelp {
   readData() async {
     var connection = await db;
     print('Data Read');
-    return await connection.query('glossarydata');
+    return await connection.query('words');
   }
 
   searchData(String words) async {
     var connection = await db;
-    var word = await connection.query('glossarydata',
+    var word = await connection.query('words',
         columns: ['englishword', 'sinhalaword', 'otherword'],
         where: "englishword = ?",
         whereArgs: [words]);
@@ -64,7 +64,7 @@ class DBHelp {
 
   suggestData(String words) async {
     var connection = await db;
-    var word = await connection.query('glossarydata',
+    var word = await connection.query('words',
         columns: ['englishword', 'sinhalaword'],
         where: "englishword like ?",
         whereArgs: [words + '%']);
@@ -74,7 +74,7 @@ class DBHelp {
   readDepartmentData(String department) async {
     var connection = await db;
     print('Data Read from $department');
-    return await connection.query('glossarydata',
+    return await connection.query('words',
         where: 'department = ?', whereArgs: [department]);
   }
 }

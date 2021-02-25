@@ -61,10 +61,10 @@ class _DepartmentWordsState extends State<DepartmentWords> {
               itemBuilder: (context, index) {
                 return Card(
                   child: ListTile(
-                    title: Text(_wordlist[index].englishWord),
+                    title: Text(_wordlist[index].englishWord != null?_wordlist[index].englishWord:""),
                     subtitle: Column(
                       children: <Widget>[
-                        Text(_wordlist[index].sinhalaWord),
+                        Text(_wordlist[index].sinhalaWord != null?_wordlist[index].sinhalaWord:""),
                         Text(_wordlist[index].otherWord != null?_wordlist[index].otherWord:"")
                       ],
                       crossAxisAlignment: CrossAxisAlignment.start,
